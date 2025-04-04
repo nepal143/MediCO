@@ -21,7 +21,7 @@ function Admin() {
 
   const fetchAppointments = async (token) => {
     try {
-      const response = await fetch('https://medico-sfh1.onrender.com/api/patient/queue', {
+      const response = await fetch('https://medico-sfh1.onrender.acom/api/patient/queue', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

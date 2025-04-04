@@ -9,7 +9,7 @@ function App() {
 //Sending signup data to backend
   async function registerUser(event){
     event.preventDefault()
-    const response = await fetch("https://medico-sfh1.onrender.com/api/register",{
+    const response = await fetch("https://medico-sfh1.onrender.acom/api/register",{
       method:"POST",
       headers:{
         "Content-Type": "application/json"

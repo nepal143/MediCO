@@ -48,7 +48,7 @@ app.post('/api/register', async (req, resp) => {
         }
     }
 })
-// console.log(user_email)
+console.log(user_email)
 app.post('/api/login', async (req, resp) => {
     const { email, password } = req.body;
 
@@ -131,7 +131,7 @@ app.get('/api/admin', async (req, resp) => {
         resp.json({ status: "error", error: "invalid-token" });
     }
 });
-port  = process.env.PORT || 4000 ;
+
 app.listen(4000, () => {
     console.log(`running on port ${4000}`)
 }) 

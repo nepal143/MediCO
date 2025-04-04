@@ -23,7 +23,7 @@ function App() {
           <Route path="priority-table" element={<PriorityPage />} /> {/* ✅ ADD THIS ROUTE */}
         </Routes>
       </BrowserRouter>
-    </div>
+    </div> 
   );
 }
 

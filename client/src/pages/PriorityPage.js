@@ -71,7 +71,7 @@ const PriorityPage = () => {
     const fetchPatients = async () => {
       try {
         const token = localStorage.getItem("token"); // admin token
-        const response = await fetch("https://medico-sfh1.onrender.com/api/patient/queue", {
+        const response = await fetch("https://medico-sfh1.onrender.acom/api/patient/queue", {
           headers: {
             "x-access-token": token,
           },
