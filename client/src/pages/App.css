@@ -1,0 +1,208 @@
+:root {
+  --primary-color: #112d4e; /* Define a root variable for primary color */
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  /* overflow-x: hidden; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+}
+
+.register{
+  width: 40vw;
+  margin: auto;
+  padding-top: 5%;
+  /* height: 50vh; */
+  display: flex;
+  /* font-family: outfirt; */
+  /* justify-content: center; */
+  align-items: center;
+  /* border: 1px solid black; */
+  box-shadow: 0px 0px  1000px rgba(11, 0, 40, 0.657) ;
+  border-radius: 30px;
+  flex-direction: column;
+
+}
+
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  
+}
+.name , .email , .password {
+  padding-left: 5%;
+      width: 60%;
+      height : 2.5vw;
+      margin: 1% auto ;
+      border-radius: 10px;
+      border: 1px solid;
+}
+.login{
+  width: 80%;
+  margin-bottom: 3%;
+  font-size: 2.5vw;
+
+}
+.submit{
+  padding: 1.5% 3.5%;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 12px;
+  margin: 2%;
+  cursor: pointer;
+  border: none;
+}
+
+@media screen and (max-width:1000px) {
+  .register{
+    width: 80vw;
+  }
+  .login{
+    font-size: 6.5vw;
+  }
+  .name , .email , .password{
+    height: 6.5vw;
+    margin:2% auto ;
+  } 
+  .submit{
+    padding: 3%  7%;
+  }
+  
+}
+@media screen and (max-width:500px) {
+  .register{
+    width: 90vw;
+  }
+  .name , .email , .password{
+    width: 70%;
+    height: 9vw ;
+  }
+  
+}
+.container{
+  height: 100vh;
+
+}
+.BrandName{
+  font-size: 3.5vw;
+  margin: auto 5vw;
+}
+.navbar{
+  display: flex;
+  width: 100vw;
+  /* height: 30px; */
+  justify-content: space-between;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+  margin: auto 1vw;
+  color: black;
+  transition: 1s;
+}
+a:hover{
+  text-decoration: underline;
+}
+.text_data_container{
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+}
+.quote{
+  margin: auto 20px;
+  min-width: 25%;
+  font-size: 7vw;
+  text-align: center;
+
+}
+.aboutMe{
+  margin: auto 20px;
+  min-width: 25%;
+  max-width: 40%;
+  flex-wrap: wrap;
+}
+.profile_card{
+  margin: auto 20px;
+  min-width: 22%;
+  /* border: black solid ;
+   */
+   box-shadow: 0px 0px 10000px rgba(0, 0, 0, 0.635) ;
+  border-radius: 4vw;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.profilephoto{
+  width: 200px;
+  height: 200px;
+  border: solid black;
+  border-radius: 50%;
+  background-image: url("./../../public/profile.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 10px auto   ;
+}
+.personname{
+  font-size:2vw;
+}
+.line{
+  background-color: black;
+  width: 90%;
+  height: 1px;
+  margin: 10px auto ;
+}
+.Image_Videos{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Image_Videos h2{
+  color: black;
+  margin: 5vw 10vw;
+  font-size: 3vw;
+}
+.img{
+  /* width:100px; */
+  height: 200px;
+  margin: auto 4vw;
+}
+.image_container{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+.googlemaps{
+  display: flex;
+
+}
+.map{
+  width: 500px;
+  margin: 5vw;
+}
+.location{
+  font-size: 10vw;
+  /* word-wrap: break-word; */
+}
+
+.left_input{
+  width: 50%;
+}
+.inputs{
+  display: flex;
+}
+
+
