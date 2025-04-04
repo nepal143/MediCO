@@ -3,9 +3,6 @@ const router = express.Router();
 const Patient = require('../models/patient.model');
 const jwt = require('jsonwebtoken');
 const MedicalHistory = require("../models/MedicalHistory");
-// 🔧 Removed verifyAdmin middleware
-
-// Add a new patient
 router.post('/add', async (req, res) => {
     try {
         console.log("Received data:", req.body); // Debugging log
@@ -25,18 +22,15 @@ router.post('/add', async (req, res) => {
             admittedAt: Date.now(),
         });
 
-        // Step 2: Find existing medical history for this patient
         let historyRecord = await MedicalHistory.findOne({ name });
 
         if (!historyRecord) {
-            // If no history exists, create a new one
             historyRecord = new MedicalHistory({
                 name,
-                history: [], // ✅ Initialize history array properly
+                history: [], 
             });
         }
 
-        // ✅ Push new medical history properly
         historyRecord.history.push({
             condition: condition.toString(),
             category: category.toString(),
@@ -45,7 +39,6 @@ router.post('/add', async (req, res) => {
 
         await historyRecord.save();
 
-        // Step 3: Reorder patients by priority & admission time
         const allPatients = await Patient.find().sort({ priority: -1, admittedAt: 1 });
 
         for (let i = 0; i < allPatients.length; i++) {
@@ -62,8 +55,6 @@ router.post('/add', async (req, res) => {
 });
 
 
-
-// ✅ Get all patients (no admin check now)
 router.get('/queue', async (req, res) => {
     try {
         const patients = await Patient.find().sort({ priority: -1, admittedAt: 1 });
