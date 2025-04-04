@@ -48,7 +48,7 @@ app.post('/api/register', async (req, resp) => {
         }
     }
 })
-console.log(user_email)
+// console.log(user_email)
 app.post('/api/login', async (req, resp) => {
     const { email, password } = req.body;
 
