@@ -9,7 +9,7 @@ const Appointment = ({ isAdmin }) => {
     const [successMessage, setSuccessMessage] = useState("");
 
     const medicalCategories = ["Heart", "Lungs", "Stomach", "Bones", "Skin", "Other"];
-    const categoryPriorityMap = { Heart: 1, Lungs: 2, Stomach: 3, Bones: 4, Skin: 5, Other: 6 };
+    const categoryPriorityMap = { Heart: 1, Lungs: 2,  Bones: 3,Stomach: 4, Skin: 5, Other: 6 };
 
     useEffect(() => {
         if (!isAdmin) return;
@@ -17,7 +17,7 @@ const Appointment = ({ isAdmin }) => {
         const fetchAppointments = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:4000/api/patient/queue", {
+                const res = await axios.get("https://medico-sfh1.onrender.com/api/patient/queue", {
                     headers: { "x-access-token": token },
                 });
 
@@ -38,10 +38,11 @@ const Appointment = ({ isAdmin }) => {
         const priority = categoryPriorityMap[category] || 999;
 
         try {
-            await axios.post("http://localhost:4000/api/patient/add", {
+            await axios.post("https://medico-sfh1.onrender.com/api/patient/add", {
                 name,
                 condition: problem,
                 priority,
+                category,
             });
 
             setSuccessMessage("✅ Appointment added successfully!");
@@ -52,7 +53,7 @@ const Appointment = ({ isAdmin }) => {
             setTimeout(() => setSuccessMessage(""), 3000);
 
             if (isAdmin) {
-                const res = await axios.get("http://localhost:4000/api/patient/queue", {
+                const res = await axios.get("https://medico-sfh1.onrender.com/api/patient/queue", {
                     headers: { "x-access-token": localStorage.getItem("token") },
                 });
                 setAppointments(res.data.patients.sort((a, b) => a.priority - b.priority));
@@ -121,7 +122,7 @@ const Appointment = ({ isAdmin }) => {
 
             {isAdmin && (
                 <>
-                    <h2 style={{ marginTop: "40px", textAlign: "center", color: "#34495e" }}>🗂 Appointment Queue (Admins Only)</h2>
+                    <h2 style={{ marginTop: "40px", textAlign: "center", color: "#34495e" }}> Appointment Queue</h2>
                     {appointments.length === 0 ? (
                         <p style={{ textAlign: "center" }}>No appointments yet.</p>
                     ) : (

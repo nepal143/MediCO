@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Welcome to Emergency Medical Service</h1>
+      <h1 style={{textAlign : "center"}}>Welcome to Emergency Medical Service</h1>
       <Appointment
         isAdmin={true}
         appointments={appointments}

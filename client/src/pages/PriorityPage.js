@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// Simple Priority Queue (Min-Heap based for simplicity)
+// Traditional Min-Heap based Priority Queue
 class PriorityQueue {
   constructor() {
     this.queue = [];
@@ -9,11 +9,45 @@ class PriorityQueue {
   enqueue(patient) {
     if (!patient || typeof patient.priority !== "number") return;
     this.queue.push(patient);
-    this.queue.sort((a, b) => a.priority - b.priority); // Min-priority first
+    this.bubbleUp();
+  }
+
+  bubbleUp() {
+    let index = this.queue.length - 1;
+    while (index > 0) {
+      let parentIndex = Math.floor((index - 1) / 2);
+      if (this.queue[index].priority >= this.queue[parentIndex].priority) break;
+      [this.queue[index], this.queue[parentIndex]] = [this.queue[parentIndex], this.queue[index]];
+      index = parentIndex;
+    }
   }
 
   dequeue() {
-    return this.queue.shift();
+    if (this.queue.length === 1) return this.queue.pop();
+    const min = this.queue[0];
+    this.queue[0] = this.queue.pop();
+    this.bubbleDown();
+    return min;
+  }
+
+  bubbleDown() {
+    let index = 0;
+    const length = this.queue.length;
+    while (true) {
+      let leftChildIndex = 2 * index + 1;
+      let rightChildIndex = 2 * index + 2;
+      let smallest = index;
+
+      if (leftChildIndex < length && this.queue[leftChildIndex].priority < this.queue[smallest].priority) {
+        smallest = leftChildIndex;
+      }
+      if (rightChildIndex < length && this.queue[rightChildIndex].priority < this.queue[smallest].priority) {
+        smallest = rightChildIndex;
+      }
+      if (smallest === index) break;
+      [this.queue[index], this.queue[smallest]] = [this.queue[smallest], this.queue[index]];
+      index = smallest;
+    }
   }
 
   isEmpty() {
@@ -21,7 +55,11 @@ class PriorityQueue {
   }
 
   getItems() {
-    return [...this.queue];
+    const sorted = [];
+    while (!this.isEmpty()) {
+      sorted.push(this.dequeue());
+    }
+    return sorted;
   }
 }
 
@@ -33,7 +71,7 @@ const PriorityPage = () => {
     const fetchPatients = async () => {
       try {
         const token = localStorage.getItem("token"); // admin token
-        const response = await fetch("http://localhost:4000/api/patient/queue", {
+        const response = await fetch("https://medico-sfh1.onrender.com/api/patient/queue", {
           headers: {
             "x-access-token": token,
           },
@@ -99,16 +137,14 @@ const PriorityPage = () => {
     </div>
   );
 };
-
-// Convert numeric priority (1–6) to labels
 function getPriorityLabel(priority) {
   switch (priority) {
-    case 1: return "Critical"; // Heart
-    case 2: return "High";     // Lungs
-    case 3: return "Medium";   // Stomach
-    case 4: return "Low";      // Bones
-    case 5: return "Low";      // Skin
-    case 6: return "Low";      // Other
+    case 1: return "Critical"; 
+    case 2: return "High";    
+    case 3: return "Medium";   
+    case 4: return "Low";      
+    case 5: return "Low";     
+    case 6: return "Low";      
     default: return "Unknown";
   }
 }
