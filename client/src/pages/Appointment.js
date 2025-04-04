@@ -17,7 +17,7 @@ const Appointment = ({ isAdmin }) => {
         const fetchAppointments = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("https://medico-sfh1.onrender.acom/api/patient/queue", {
+                const res = await axios.get("https://medico-sfh1.onrender.com/api/patient/queue", {
                     headers: { "x-access-token": token },
                 });
 
@@ -38,7 +38,7 @@ const Appointment = ({ isAdmin }) => {
         const priority = categoryPriorityMap[category] || 999;
 
         try {
-            await axios.post("https://medico-sfh1.onrender.acom/api/patient/add", {
+            await axios.post("https://medico-sfh1.onrender.com/api/patient/add", {
                 name,
                 condition: problem,
                 priority,
@@ -53,7 +53,7 @@ const Appointment = ({ isAdmin }) => {
             setTimeout(() => setSuccessMessage(""), 3000);
 
             if (isAdmin) {
-                const res = await axios.get("https://medico-sfh1.onrender.acom/api/patient/queue", {
+                const res = await axios.get("https://medico-sfh1.onrender.com/api/patient/queue", {
                     headers: { "x-access-token": localStorage.getItem("token") },
                 });
                 setAppointments(res.data.patients.sort((a, b) => a.priority - b.priority));
