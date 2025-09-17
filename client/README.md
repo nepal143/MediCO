@@ -1,4 +1,13 @@
+
 # Getting Started with Create React App
+
+## Team RJ19
+
+**Team Members:**
+- Vishal Suthar
+- Nepal Singh
+
+This project is developed by Team RJ19.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

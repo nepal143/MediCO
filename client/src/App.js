@@ -7,6 +7,7 @@ import Navbar from "./pages/Navbar";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import PriorityPage from "./pages/PriorityPage"; // ✅ ADD THIS LINE
+import Team from "./pages/Team";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="admin" element={<Admin />} />
           <Route path="admin-login" element={<AdminLogin />} />
           <Route path="priority-table" element={<PriorityPage />} /> {/* ✅ ADD THIS ROUTE */}
+          <Route path="Team" element={<Team />} />
         </Routes>
       </BrowserRouter>
     </div> 
